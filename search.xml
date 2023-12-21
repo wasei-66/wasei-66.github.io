@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>模块化开发</title>
+      <link href="/2023/12/21/%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91/"/>
+      <url>/2023/12/21/%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91/</url>
+      
+        <content type="html"><![CDATA[<p>模块化开发是指一个模块就是实现特定功能的文件，有了模块，我们就可以更方便地使用别人的代码，想要什么功能，就加载什么模块。模块开发需要遵循一定的规范，否则就都乱套了。</p><h2 id="模块化开发"><a href="#模块化开发" class="headerlink" title="模块化开发"></a>模块化开发</h2><h3 id="一、CommonJS-模块化-（服务器端-Node）"><a href="#一、CommonJS-模块化-（服务器端-Node）" class="headerlink" title="一、CommonJS 模块化 （服务器端 Node）"></a>一、CommonJS 模块化 （服务器端 Node）</h3><p>node 应用由模块组成，采用 CommonJs 模块规范</p><p>单个文件  -&gt;  模块  -&gt;  单独作用域（模块作用域），私有，可多次加载（有缓存），同步</p><p>每个模块(文件)内部：module 变量代表当前模块，它为对象，它的exports属性（即module.exports）是对外的接口；<br>加载某个模块，其实是加载该模块的 module.exports 属性（当前模块对外输出的接口）</p><h4 id="CommonJS-使用-exports-和-require-来导出、导入模块"><a href="#CommonJS-使用-exports-和-require-来导出、导入模块" class="headerlink" title="CommonJS 使用 exports 和 require 来导出、导入模块"></a>CommonJS 使用 <code>exports</code> 和 <code>require</code> 来导出、导入模块</h4><h4 id="导出模块："><a href="#导出模块：" class="headerlink" title="导出模块："></a>导出模块：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum = <span class="keyword">function</span>(<span class="params">a,b</span>) &#123;</span><br><span class="line"><span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 导出</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="导入模块：（当前路径必须写"><a href="#导入模块：（当前路径必须写" class="headerlink" title="导入模块：（当前路径必须写 .&#x2F; )"></a>导入模块：（当前路径必须写 .&#x2F; )</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 后缀名默认是.js，可省略</span></span><br><span class="line"><span class="keyword">const</span> xxx = <span class="built_in">require</span>(<span class="string">&#x27;xxx&#x27;</span>);    </span><br></pre></td></tr></table></figure><h4 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node common-js模块化/引入模块.js</span><br></pre></td></tr></table></figure><h3 id="二、ES6-模块化规范（通用）"><a href="#二、ES6-模块化规范（通用）" class="headerlink" title="二、ES6 模块化规范（通用）"></a>二、ES6 模块化规范（通用）</h3><h5 id="ES6-的模块化无法在-Node-js-中执行，需要用-Babel-编辑成-ES5-后再执行"><a href="#ES6-的模块化无法在-Node-js-中执行，需要用-Babel-编辑成-ES5-后再执行" class="headerlink" title="ES6 的模块化无法在 Node.js 中执行，需要用 Babel 编辑成 ES5 后再执行"></a>ES6 的模块化无法在 Node.js 中执行，需要用 Babel 编辑成 ES5 后再执行</h5><h4 id="默认导入-导出"><a href="#默认导入-导出" class="headerlink" title="默认导入&#x2F;导出"></a>默认导入&#x2F;导出</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.导出: 一个文件中只能有一个默认导出 (export default)</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;x1,x2..&#125;;</span><br><span class="line"><span class="comment">// 2.导入：命名可自定义且不能加 &#123;&#125;</span></span><br><span class="line"><span class="keyword">import</span> 任意命名 <span class="keyword">from</span> 文件路径;</span><br><span class="line"><span class="comment">// 3.使用</span></span><br><span class="line">任意命名.<span class="property">x1</span>/x2</span><br></pre></td></tr></table></figure><h4 id="按需导入-导出"><a href="#按需导入-导出" class="headerlink" title="按需导入&#x2F;导出"></a>按需导入&#x2F;导出</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> a = <span class="number">12</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123;xxx1，...&#125;;</span><br><span class="line"><span class="comment">// 2.导入: 命名必须加 &#123;&#125;，且名称与导出名称一致</span></span><br><span class="line"><span class="keyword">import</span> &#123;xxx1, ...&#125; <span class="keyword">from</span> 文件路径;</span><br><span class="line"><span class="comment">// 3.导入并重命名</span></span><br><span class="line"><span class="keyword">import</span> &#123;xxx <span class="keyword">as</span> y&#125; <span class="keyword">from</span> 文件路径;</span><br><span class="line"><span class="comment">// 4.批量导入（使用时：all.xxx1）</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> all <span class="keyword">from</span> 文件路径;</span><br></pre></td></tr></table></figure><h4 id="直接导入"><a href="#直接导入" class="headerlink" title="直接导入"></a>直接导入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import 文件路径；</span><br></pre></td></tr></table></figure><h3 id="三、浏览器端"><a href="#三、浏览器端" class="headerlink" title="三、浏览器端"></a>三、浏览器端</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AMD（异步模块定义） Request.js</span><br><span class="line">CMD（通用模块定义） Sea.js</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 模块化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vue 中全局/局部引入 less</title>
+      <link href="/2023/12/18/Vue%20%E4%B8%AD%E5%85%A8%E5%B1%80%E3%80%81%E5%B1%80%E9%83%A8%E5%BC%95%E5%85%A5%20less/"/>
+      <url>/2023/12/18/Vue%20%E4%B8%AD%E5%85%A8%E5%B1%80%E3%80%81%E5%B1%80%E9%83%A8%E5%BC%95%E5%85%A5%20less/</url>
+      
+        <content type="html"><![CDATA[<p>Less 是一种 CSS 预处理语言，它扩充了 CSS 语言，增加了诸如变量、混合（mixin）、函数等功能，让 CSS 更易维护、方便制作主题、扩充。</p><h2 id="若在-Vue-中使用，需要进行依赖安装，分全局-局部引入："><a href="#若在-Vue-中使用，需要进行依赖安装，分全局-局部引入：" class="headerlink" title="若在 Vue 中使用，需要进行依赖安装，分全局 &#x2F; 局部引入："></a>若在 Vue 中使用，需要进行依赖安装，分全局 &#x2F; 局部引入：</h2><h3 id="1）单文件引入"><a href="#1）单文件引入" class="headerlink" title="1）单文件引入"></a>1）单文件引入</h3><h4 id="安装-less-loader"><a href="#安装-less-loader" class="headerlink" title="安装  less-loader"></a>安装  <code>less-loader</code></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i less@<span class="number">3.0</span><span class="number">.4</span> less-loader@<span class="number">5.0</span><span class="number">.0</span> -D</span><br></pre></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 注意：引入时加分号，否则报错： Missing semi-colon or unrecognised media features on import </span><br><span class="line">&lt;style lang=&quot;less&quot; scoped&gt;</span><br><span class="line">    <span class="keyword">@import</span> <span class="string">&#x27;../../assets/less/mixin.less&#x27;</span>;</span><br><span class="line">    <span class="keyword">@import</span> <span class="string">&#x27;~@/assets/less/mixin.less&#x27;</span>;</span><br><span class="line">    <span class="keyword">@import</span> url(<span class="string">&#x27;~@/assets/less/mixin.less&#x27;</span>);</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure><h3 id="2）全局引入"><a href="#2）全局引入" class="headerlink" title="2）全局引入"></a>2）全局引入</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i style-resources-loader vue-cli-plugin-style-resources-loader -D</span><br></pre></td></tr></table></figure><h4 id="在-vue-config-js-添加以下代码"><a href="#在-vue-config-js-添加以下代码" class="headerlink" title="在 vue.config.js 添加以下代码"></a>在 <code>vue.config.js</code> 添加以下代码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">pluginOptions</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;style-resources-loader&#x27;</span>: &#123;</span><br><span class="line">          <span class="attr">preProcessor</span>: <span class="string">&#x27;less&#x27;</span>,</span><br><span class="line">          <span class="attr">patterns</span>: [</span><br><span class="line">              path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;src/assets/less/mixin.less&quot;</span>),</span><br><span class="line">              <span class="comment">// 或者 path.join(__dirname, &#x27;./src/assets/less/mixin.less&#x27;),</span></span><br><span class="line">              <span class="comment">// 可引入多个其它 less 文件</span></span><br><span class="line">              <span class="comment">// .........</span></span><br><span class="line">          ] </span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+            <tag> Less </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
