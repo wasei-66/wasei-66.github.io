@@ -6523,6 +6523,7 @@ blockquote.pullquote.right {
 }
 /* root伪类指定全局颜色 */
 :root {
+  --global-font-size: 16px;
   --blue-custom: #5ea6e5;
   --loading-color: rgba(207, 246, 247, 0.92);
   --border-color: #c9c9c9;
@@ -6538,7 +6539,7 @@ blockquote.pullquote.right {
   --color-black: rgb(0, 0, 0);
   --color-darkblue: rgb(97, 100, 159);
   --color-heoblue: rgb(66, 90, 239);
-  --btn-bg: var(--theme-color) !important;
+  /* --btn-bg: var(--theme-color) !important; */
   --scrollbar-color: var(--theme-color) !important;
   --border-style: 1px solid rgba(169, 169, 169, 0.7);
   /* 代码框行数背景色 */
@@ -6547,6 +6548,18 @@ blockquote.pullquote.right {
   --hltools-bg: #1c1c1c;
   /* 代码框背景色 */
   --hl-bg: #282c34;
+}
+
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src: url('/fonts/AlibabaPuHuiTi-2-45-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  /* font-family: 'AlibabaPuHuiTi' !important; */
+  font-family: '楷体' !important;
 }
 
 /* 滚动条样式 */
@@ -6608,6 +6621,47 @@ blockquote.pullquote.right {
 }
 [data-theme="dark"] #page-header.nav-fixed #nav {
   background: rgba(0, 0, 0, 0.95) !important;
+}
+
+/* 一级菜单居中 */
+#nav .menus_items {
+  position: absolute !important;
+  width: max-content !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+#page-header.nav-fixed #nav {
+
+}
+
+#nav .site-name {
+  font-size: 24px;
+}
+#nav .site-page {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#recent-posts > .recent-post-item >.recent-post-info > .article-title {
+  font-weight: bold;
+}
+
+/* 页脚背景色 */
+@keyframes gradientBG {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+#footer {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
 }
 .search-dialog {
   position: fixed;
