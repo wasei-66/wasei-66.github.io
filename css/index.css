@@ -6572,9 +6572,8 @@ body {
   border-radius: 2em;
 }
 ::-webkit-scrollbar-thumb {
-  /* background-color: #49B1F5; */
-  background-color: #39c5bb;
-  /* background-image: -webkit-linear-gradient(
+  background-color: #b2dce6;
+  background-image: -webkit-linear-gradient(
     45deg,
     rgba(255, 255, 255, 0.4) 25%,
     transparent 25%,
@@ -6582,16 +6581,6 @@ body {
     rgba(255, 255, 255, 0.4) 50%,
     rgba(255, 255, 255, 0.4) 75%,
     transparent 75%,
-    transparent
-  ); */
-  background-image: -webkit-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.4) 15%,
-    transparent 15%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0.4) 85%,
-    transparent 85%,
     transparent
   );
   border-radius: 2em;
@@ -6601,8 +6590,7 @@ body {
 }
 ::-moz-selection {
   color: #fff;
-  /* background-color: #49B1F5; */
-  background-color: #39c5bb;
+  background-color: #b2dce6;
 }
 
 /* 固定导航栏背景色 */
