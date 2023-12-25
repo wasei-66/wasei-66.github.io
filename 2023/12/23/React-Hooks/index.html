@@ -322,8 +322,8 @@
   const loadGitalk = async() => {
     if (typeof Gitalk === 'function') initGitalk()
     else {
-      await getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
-      await getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js')
+      await getCSS('https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css')
+      await getScript('https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js')
       initGitalk()
     }
   }
