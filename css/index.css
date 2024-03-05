@@ -6559,7 +6559,8 @@ blockquote.pullquote.right {
 
 body {
   /* font-family: 'AlibabaPuHuiTi' !important; */
-  font-family: '楷体' !important;
+  /* font-family: '楷体' !important; */
+  font-family: 'sans-serif' !important;
 }
 
 /* 固定导航栏背景色 */
