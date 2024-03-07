@@ -6516,7 +6516,7 @@ blockquote.pullquote.right {
 }
 /* root伪类指定全局颜色 */
 :root {
-  --global-font-size: 16px;
+  --global-font-size: 17px;
   --blue-custom: #5ea6e5;
   --loading-color: rgba(207, 246, 247, 0.92);
   --border-color: #c9c9c9;
@@ -6552,8 +6552,10 @@ blockquote.pullquote.right {
 
 body {
   /* font-family: 'AlibabaPuHuiTi' !important; */
-  /* font-family: '楷体' !important; */
-  font-family: 'sans-serif' !important;
+  font-family: '楷体' !important;
+  /* font-family: 'sans-serif' !important; */
+  /* font-family: '-apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif'; */
+  /* -webkit-font-smoothing: antialiased; */
 }
 
 /* 固定导航栏背景色 */
@@ -6635,6 +6637,10 @@ center#name-container:hover {
 /* 文章标题 */
 #recent-posts > .recent-post-item >.recent-post-info > .article-title {
   font-weight: bold;
+}
+
+#page-header #post-info {
+  text-align: center;
 }
 
 /* 页脚背景色 */
