@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Vue 父组件异步传递数据给子组件，子组件接收不到</title>
+      <link href="/2024/07/23/Vue/%E7%88%B6%E5%BC%82%E6%AD%A5%E4%BC%A0%E5%AD%90%E9%97%AE%E9%A2%98/"/>
+      <url>/2024/07/23/Vue/%E7%88%B6%E5%BC%82%E6%AD%A5%E4%BC%A0%E5%AD%90%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>在父组件中将接口请求到的数据通过 prop 方式传递给子组件，而子组件在 mounted() 方法中打印为空</p></blockquote><p><strong>先说结论</strong></p><ul><li><strong><font color="red">子组件 mounted 先于父组件 mounted 执行</font></strong><br>父组件在 mounted 或 created 中进行接口请求，将请求的接口数据传递给子组件，因为是从后端获取的异步数据，就很有可能出现接口还未请求完成，子组件 mounted 就已经执行了</li></ul><p><strong>解决方式</strong></p><ul><li>1）在子组件中通过 <code>watch</code> 监听父组件传递过来的数据</li><li>2）在父组件中使用变量标识接口是否请求完成，结合 <code>v-if</code> 请求完成再渲染子组件</li></ul><p>【具体请看】：<a href="https://blog.csdn.net/weixin_43290151/article/details/124954767">https://blog.csdn.net/weixin_43290151/article/details/124954767</a></p><hr><p><strong>这里来回顾一下父子组件生命周期执行顺序</strong></p><blockquote><p><strong>1.创建、挂载阶段</strong></p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">父 beforeCreate -------</span><br><span class="line">父 created -------</span><br><span class="line">父 beforeMount -------</span><br><span class="line">子 beforeCreate -------</span><br><span class="line">子 created -------</span><br><span class="line">子 beforeMount -------</span><br><span class="line">子 mounted -------</span><br><span class="line">父 mounted -------</span><br></pre></td></tr></table></figure><blockquote><p><strong>2.更新状态</strong></p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">父 beforeUpdate -------</span><br><span class="line">子 beforeUpdate -------</span><br><span class="line">子 updated -------</span><br><span class="line">父 updated -------</span><br></pre></td></tr></table></figure><blockquote><p><strong>3.销毁阶段</strong></p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">父 beforeDestroy -------</span><br><span class="line">子 beforeDestroy -------</span><br><span class="line">子 destroyed -------</span><br><span class="line">父 destroyed -------</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue2 - 深入响应式原理</title>
       <link href="/2024/03/05/Vue/Vue2-%E6%B7%B1%E5%85%A5%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/"/>
       <url>/2024/03/05/Vue/Vue2-%E6%B7%B1%E5%85%A5%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/</url>
